@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DataGridMAUI"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             x:Class="DataGridMAUI.MainPage">
+    <ContentPage.BindingContext>
+        <local:ViewModel x:Name="ViewModel"></local:ViewModel>
+    </ContentPage.BindingContext>
+    <syncfusion:SfDataGrid x:Name="dataGrid" AutoGenerateColumnsMode="None" GridLinesVisibility="Both" HeaderGridLinesVisibility="Both" VerticalOptions="FillAndExpand" ItemsSource="{Binding OrderInfoCollection}" >
+        <syncfusion:SfDataGrid.Columns>
+            <syncfusion:DataGridNumericColumn MappingName="OrderID" Format="D">
+                <syncfusion:DataGridNumericColumn.HeaderTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label BindingContext="{x:Reference ViewModel}" 
+             Text="{Binding HeaderText}" FontAttributes="Bold" VerticalOptions="Center" Padding="12" HorizontalOptions="End"
+             TextColor="Black"
+             />
+                        </StackLayout>
+                    </DataTemplate>
+                </syncfusion:DataGridNumericColumn.HeaderTemplate>
+            </syncfusion:DataGridNumericColumn>
+            <syncfusion:DataGridTextColumn MappingName="Customer" HeaderText="Name"></syncfusion:DataGridTextColumn>
+            <syncfusion:DataGridTextColumn MappingName="Country"></syncfusion:DataGridTextColumn>
+        </syncfusion:SfDataGrid.Columns>
+    </syncfusion:SfDataGrid>
+</ContentPage>
